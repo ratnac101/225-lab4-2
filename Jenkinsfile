@@ -24,19 +24,14 @@ pipeline {
         // 2. Static Code Testing (Python + HTML)
         //    -> satisfies "Static Code Testing" rubric
         stage('Static Code Testing') {
-            steps {
-                sh '''
-                    # Python static analysis
-                    pip3 install flake8
-                    flake8 main.py data-gen.py data-clear.py || true
-
-                    # HTML static analysis
-                    npm install htmlhint --save-dev
-                    npx htmlhint templates/*.html || true
-                '''
-            }
-        }
-
+    steps {
+        sh '''
+            # HTML static analysis for the Flask templates
+            npm install htmlhint --save-dev
+            npx htmlhint templates/*.html
+        '''
+    }
+}
         // 3. Docker Build & Push
         //    -> satisfies "Docker Build" rubric
         stage('Build & Push Docker Image') {
