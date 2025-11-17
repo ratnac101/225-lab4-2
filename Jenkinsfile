@@ -78,7 +78,6 @@ pipeline {
                     -e BURP_REPORT_FILE_PATH=${WORKSPACE}/dastardly-report.xml \
                     public.ecr.aws/portswigger/dastardly:latest
                 '''
-                # NOTE: keep BURP_START_URL as your DEV ClusterIP
             }
         }
 
